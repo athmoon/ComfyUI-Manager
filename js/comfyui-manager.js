@@ -11,7 +11,7 @@ import {
 	showYouMLShareDialog
 } from "./comfyui-share-common.js";
 import { OpenArtShareDialog } from "./comfyui-share-openart.js";
-import { free_models, install_pip, install_via_git_url, manager_instance, rebootAPI, setManagerInstance, show_message } from "./common.js";
+import { free_models, install_pip, install_via_git_url, manager_instance, rebootAPI, migrateAPI, setManagerInstance, show_message } from "./common.js";
 import { ComponentBuilderDialog, getPureName, load_components, set_component_policy } from "./components-manager.js";
 import { CustomNodesManager } from "./custom-nodes-manager.js";
 import { ModelManager } from "./model-manager.js";
@@ -250,6 +250,17 @@ const style = `
 	overflow: hidden;
 	font-size: 17px !important;
 	background-color: #500000 !important;
+	color: white !important;
+}
+
+
+.cm-button-pure-red {
+	width: 310px;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+	font-size: 17px !important;
+	background-color: red !important;
 	color: white !important;
 }
 
@@ -801,6 +812,11 @@ class ManagerMenuDialog extends ComfyDialog {
 					type: "button",
 					textContent: "Restart",
 					onclick: () => rebootAPI()
+				}),
+				$el("button.cm-button-pure-red", {
+					type: "button",
+					textContent: "Migrate",
+					onclick: () => migrateAPI()
 				}),
 			];
 

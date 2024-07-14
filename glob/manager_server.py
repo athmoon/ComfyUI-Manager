@@ -988,7 +988,7 @@ async def disable_node(request):
     return web.Response(status=400)
 
 
-@routes.post("/customnode/migrate_unmanaged_nodes")
+@routes.post("/manager/migrate_unmanaged_nodes")
 async def migrate_unmanaged_nodes(request):
     print(f"[ComfyUI-Manager] Migrating unmanaged nodes...")
     core.unified_manager.migrate_unmanaged_nodes()
