@@ -15,6 +15,8 @@ if aria2 is not None:
 
 
 def download_url(model_url: str, model_dir: str, filename: str):
+    if HF_ENDPOINT:
+        model_url = model_url.replace('https://huggingface.co', HF_ENDPOINT)
     if aria2:
         return aria2_download_url(model_url, model_dir, filename)
     else:
